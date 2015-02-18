@@ -22,8 +22,6 @@ For each record in the dataset it is provided:
 
 In this project, I created a run_analysis.R that answer some questions asked by the coursera course, but in summary this script will:
 
-* Downloads and unzips the appropriate data file into a working directory
-
 * Converts the raw data into R data frame objects
 
 * Merges the train and test data into a single files for analysis
