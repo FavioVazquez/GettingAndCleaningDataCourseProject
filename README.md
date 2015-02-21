@@ -24,7 +24,7 @@ For each record in the dataset it is provided:
 
 ## This project
 
-In this project, I created a run_analysis.R that answer some questions asked by the coursera course, but in summary this script will:
+In this project, I created a run_analysis.R that answer some questions asked by the coursera course, but in summary this script:
 
 * Converts the raw data into R data frame objects
 
