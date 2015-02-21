@@ -10,7 +10,7 @@
 require(data.table)
 
 ##########################
-## Part 1: Merges the training and the test sets to create one data set.
+## Part 1: Merge the training and the test sets to create one data set.
 ##########################
 
 
@@ -42,7 +42,7 @@ bind_test <- cbind(subject_test, label_test, x_test)
 DT <- rbind(bind_train,bind_test)
 
 ###############################################
-##Part 2. Extracts only the measurements on the mean and standard deviation for 
+##Part 2. Extract only the measurements on the mean and standard deviation for 
 ##each measurement.
 ###############################################
 
@@ -58,3 +58,21 @@ stand_deviation <- apply(DT[3:563], 2, sd)
 
 extracted_stats <- cbind(means,stand_deviation)
 
+###############################################
+##Part 3.Use descriptive activity names to name the activities 
+##in the data set
+###############################################
+
+DT$activity[which(DT$activity == 1)] <- 'Walking'
+DT$activity[which(DT$activity == 2)] <- 'Walking upstairs'
+DT$activity[which(DT$activity == 3)] <- 'Walking downstairs'
+DT$activity[which(DT$activity == 4)] <- 'Sitting'
+DT$activity[which(DT$activity == 5)] <- 'Standing'
+DT$activity[which(DT$activity == 6)] <- 'Laying'
+
+##############################################
+## Part 4: Appropriately labels the data set 
+##with descriptive names
+#############################################
+
+features <- fread()
