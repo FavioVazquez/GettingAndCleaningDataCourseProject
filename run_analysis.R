@@ -75,4 +75,42 @@ DT$activity[which(DT$activity == 6)] <- 'Laying'
 ##with descriptive names
 #############################################
 
-features <- fread()
+features <- fread(input = "features.txt")
+features$V1 <- NULL
+
+# Assign each row name from the 'features' data frame to the appropriate column
+# in the 'DT' data frame
+
+m <- 1
+#to get rid of the header
+n <- m+2
+
+
+while (m<564){
+        rename <- features[m,]
+        colnames(DT)[n] <- paste(rename)
+        m = m+1
+        n = n+1
+}
+
+################################################
+## Part 5: Create a new tidy data set with the 
+##average of each variable for each activity and
+##each subject
+################################################
+
+sumDT <- aggregate(DT[,3] ~ subject + activity, data = DT, FUN = "mean")
+
+#calculate means for each column
+
+for (i in 4:ncol(DT)){
+        sumDT[,i] <- aggregate(DT[,i] ~ subject + activity, data = DT, FUN = "mean")[,3]
+}
+
+# now rename the columns of this data set with the ones in the DT data set
+
+colnames(sumDT) <- colnames(DT)
+
+# write the data set in a file
+
+write.table(sumDT, "tidydata.txt")
